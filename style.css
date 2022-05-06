@@ -1,0 +1,22 @@
+html,body{
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+}
+
+#grid-container{
+    display: flex;
+    flex-wrap: wrap;
+    height: 700px;
+    width: 700px;
+    margin-left: 30%;
+}
+
+.grid-square{
+    display: inline-block;
+
+    box-sizing: border-box;
+    border-color: black;
+    border-width: 0.05px;
+    border-style: solid;
+}
