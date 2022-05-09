@@ -12,9 +12,21 @@ console.log(grid.offsetHeight);
 //INITIALIZE EVENT LISTENERS
 document.querySelector('#size-btn').addEventListener('click', promptSize);
 document.querySelector('#clear-btn').addEventListener('click', shakeGrid);
-document.querySelector('#black-ink').addEventListener('click', () => ink = 'black');
-document.querySelector('#color-ink').addEventListener('click', () => ink = 'color');
-document.querySelector('#eraser').addEventListener('click', () => ink = 'eraser');
+document.querySelector('#black-ink').addEventListener('click', e => {
+    clearSelections();
+    e.target.classList.add('selected-ink');
+    ink = 'black';
+});
+document.querySelector('#color-ink').addEventListener('click', e => {
+    clearSelections();
+    e.target.classList.add('selected-ink');
+    ink = 'color';
+});
+document.querySelector('#eraser').addEventListener('click', e => {
+    clearSelections();
+    e.target.classList.add('selected-ink');
+    ink = 'eraser';
+});
 
 //FUNCTION DECLARATIONS
 function promptSize(){
@@ -60,4 +72,11 @@ function clearGrid(){
 function shakeGrid() {
     let elements = Array.from(grid.children);
     elements.forEach( (el) => el.style.backgroundColor = 'white');
+}
+
+function clearSelections(){
+    let btns = document.querySelectorAll('.ink')
+    for(const btn of btns){
+        btn.classList.remove('selected-ink')
+    }
 }
